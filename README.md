@@ -31,6 +31,21 @@ All components are connected through a shared state (Cart).
 - Vanilla JavaScript (ES6+)
 - Vite
 
+## 🌐 Deploy (GitHub Pages)
+
+This project is configured for automatic deploy to GitHub Pages via GitHub Actions.
+
+### Steps
+
+1. Push changes to `main` branch.
+2. Open repository settings: `Settings -> Pages`.
+3. In `Build and deployment`, set `Source` to `GitHub Actions`.
+4. Wait until workflow `Deploy to GitHub Pages` completes.
+
+Site URL will be:
+
+`https://cheer77.github.io/nike-store/`
+
 ## 📦 Future Improvements
 
 - Quantity-based cart logic (better UX)
