@@ -1,4 +1,5 @@
 import './footer.scss';
+import logoIcon from '../../assets/icons/logo.svg';
 
 export default class Footer {
 	render() {
@@ -12,7 +13,7 @@ export default class Footer {
 		return `
 				<div class="footer__inner cont">
 					<div class="footer__logo">
-						<img src="./src/assets/icons/logo.svg" alt="logo" />
+						<img src="${logoIcon}" alt="logo" />
 					</div>
 					<nav class="footer__nav">
 						<ul class="footer__list">

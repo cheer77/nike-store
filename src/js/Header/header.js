@@ -1,4 +1,6 @@
 import './header.scss';
+import logoIcon from '../../assets/icons/logo.svg';
+import cartIcon from '../../assets/icons/cart.svg';
 
 export default class Header {
 	constructor(cart, onCartClick) {
@@ -29,8 +31,8 @@ export default class Header {
 
 	template() {
 		return `
-      <div class="header__inner cont">
-        <div class="header__logo"><img src="./src/assets/icons/logo.svg" alt="logo" /></div>
+        <div class="header__inner cont">
+        <div class="header__logo"><img src="${logoIcon}" alt="logo" /></div>
         <nav class="header__nav">
           <ul class="header__list">
             <li class="header__item"><a href="/" class="header__link">Home</a></li>
@@ -39,7 +41,7 @@ export default class Header {
           </ul>
         </nav>
         <div class="header__cart">
-          <img src="./src/assets/icons/cart.svg" alt="cart" />
+          <img src="${cartIcon}" alt="cart" />
           <span class="header__cart-count">0</span>
         </div>
       </div>
