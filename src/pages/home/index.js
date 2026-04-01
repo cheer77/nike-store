@@ -1,11 +1,9 @@
-import '../scss/style.scss';
-import './Products/products';
-import './Header/header';
-import Header from './Header/header';
-import Footer from './Footer/footer';
-import Products from './Products/products';
-import Cart from './Cart/cart';
-import CartDrawer from './CartDrawer/cartDrawer';
+import '../../scss/style.scss';
+import Header from '../../components/Header/header';
+import Footer from '../../components/Footer/footer';
+import Products from '../../components/Products/products';
+import Cart from '../../components/Cart/cart';
+import CartDrawer from '../../components/CartDrawer/cartDrawer';
 
 const app = document.getElementById('app');
 const cart = new Cart();

@@ -1,11 +1,11 @@
-import product1Img from '../../assets/products/1.avif';
-import product2Img from '../../assets/products/2.avif';
-import product3Img from '../../assets/products/3.avif';
-import product4Img from '../../assets/products/4.avif';
-import product5Img from '../../assets/products/5.avif';
-import product6Img from '../../assets/products/6.avif';
-import product7Img from '../../assets/products/7.avif';
-import product8Img from '../../assets/products/8.avif';
+import product1Img from '../assets/products/1.avif';
+import product2Img from '../assets/products/2.avif';
+import product3Img from '../assets/products/3.avif';
+import product4Img from '../assets/products/4.avif';
+import product5Img from '../assets/products/5.avif';
+import product6Img from '../assets/products/6.avif';
+import product7Img from '../assets/products/7.avif';
+import product8Img from '../assets/products/8.avif';
 
 const productsData = [
 	{

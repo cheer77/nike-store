@@ -1,5 +1,5 @@
 import './products.scss';
-import productsData from '../DATA/productsData';
+import productsData from '../../data/productsData';
 
 export default class Products {
 	constructor(cart, onUpdate) {

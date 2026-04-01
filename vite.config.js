@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import { resolve } from 'node:path';
 
 const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
 const repositoryName = process.env.GITHUB_REPOSITORY?.split('/')[1];
@@ -21,6 +22,12 @@ export default defineConfig({
 	build: {
 		// Enable sourcemaps for production build
 		sourcemap: true,
+		rollupOptions: {
+			input: {
+				main: resolve(__dirname, 'index.html'),
+				product: resolve(__dirname, 'product.html'),
+			},
+		},
 	},
 	server: {
 		// Automatically open browser on dev server start
