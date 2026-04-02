@@ -1,5 +1,6 @@
 import './products.scss';
 import productsData from '../../data/productsData';
+import { getProductUrl } from '../../router/routes';
 
 export default class Products {
 	constructor(cart, onUpdate) {
@@ -94,7 +95,7 @@ export default class Products {
 							<div class="store__product ${stockLeft === 0 ? 'store__product--disabled' : ''}">
 								<img src="${product.img}" alt="${product.name}" class="store__product-img" />
 								<div class="store__product-inner">
-									<a href="/product.html?id=${product.id}" class="store__product-view" aria-label="View ${product.name}">
+										<a href="${getProductUrl(product.id)}" class="store__product-view" aria-label="View ${product.name}">
 										View product <span class="store__product-view-arrow" aria-hidden="true">→</span>
 									</a>
 									<h3 class="store__product-title">${product.name}</h3>
