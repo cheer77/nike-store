@@ -91,12 +91,15 @@ export default class Products {
 					const stockLeft = product.stock - quantityInCart;
 
 						return /*html*/ `
-						<div class="store__product ${stockLeft === 0 ? 'store__product--disabled' : ''}">
-							<img src="${product.img}" alt="${product.name}" class="store__product-img" />
-							<div class="store__product-inner">
-								<h3 class="store__product-title">${product.name}</h3>
-								<p class="store__product-price">$ ${product.price}</p>
-								<p class="store__product-stock">In stock: ${stockLeft}</p>
+							<div class="store__product ${stockLeft === 0 ? 'store__product--disabled' : ''}">
+								<img src="${product.img}" alt="${product.name}" class="store__product-img" />
+								<div class="store__product-inner">
+									<a href="/product.html?id=${product.id}" class="store__product-view" aria-label="View ${product.name}">
+										View product <span class="store__product-view-arrow" aria-hidden="true">→</span>
+									</a>
+									<h3 class="store__product-title">${product.name}</h3>
+									<p class="store__product-price">$ ${product.price}</p>
+									<p class="store__product-stock">In stock: ${stockLeft}</p>
 								<button
 									data-id="${product.id}"
 									class="store__product-btn ${stockLeft === 0 ? 'store__product-btn--disabled' : ''}"

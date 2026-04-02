@@ -20,7 +20,10 @@
 		overflow: hidden;
 		background: linear-gradient(180deg, #fff 0%, #f7f7f8 100%);
 		box-shadow: 0 8px 22px rgba(15, 15, 16, 0.06);
-		transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+		transition:
+			transform 0.25s ease,
+			box-shadow 0.25s ease,
+			border-color 0.25s ease;
 
 		&::before {
 			content: 'new drop';
@@ -68,7 +71,9 @@
 		aspect-ratio: 4 / 3;
 		object-fit: cover;
 		background: #ececef;
-		transition: transform 0.35s ease, filter 0.35s ease;
+		transition:
+			transform 0.35s ease,
+			filter 0.35s ease;
 
 		&:hover {
 			transform: scale(1.04);
@@ -77,10 +82,44 @@
 	}
 
 	&__product-inner {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
 		padding: 16px;
+	}
+
+	&__product-view {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		max-width: max-content;
+		padding: 4px 10px;
+		border: 1px solid #dbdbe0;
+		border-radius: 999px;
+		background: rgba(#fff, 0.95);
+		color: $primary-color;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		line-height: 1;
+		transition:
+			border-color 0.2s ease,
+			background-color 0.2s ease,
+			color 0.2s ease;
+
+		&:hover {
+			border-color: $secondary-color;
+			background: #fff;
+			color: $secondary-color;
+		}
+	}
+
+	&__product-view-arrow {
+		display: inline-block;
+		font-size: 12px;
+		animation: storeArrowPulse 1.6s ease-in-out infinite;
 	}
 
 	&__product-title {
@@ -113,10 +152,11 @@
 		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		cursor: pointer;
-		transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+		transition:
+			box-shadow 0.2s ease,
+			background-color 0.2s ease;
 
 		&:hover {
-			transform: translateY(-2px);
 			box-shadow: 0 12px 20px rgba(17, 17, 17, 0.24);
 		}
 	}
@@ -129,6 +169,19 @@
 			transform: none;
 			box-shadow: none;
 		}
+	}
+}
+
+@keyframes storeArrowPulse {
+	0%,
+	100% {
+		transform: translateX(0);
+		opacity: 0.85;
+	}
+
+	50% {
+		transform: translateX(2px);
+		opacity: 1;
 	}
 }
 
