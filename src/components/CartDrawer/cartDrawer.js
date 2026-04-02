@@ -19,7 +19,7 @@ export default class CartDrawer {
 	template() {
 		const items = this.cart.getItems();
 
-		return `
+		return /*html*/ `
 			<div class="cart-drawer__overlay"></div>
 
 			<div class="cart-drawer__panel">

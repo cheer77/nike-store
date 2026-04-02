@@ -30,7 +30,7 @@ export default class Header {
 	}
 
 	template() {
-		return `
+		return /*html*/ `
         <div class="header__inner cont">
         <div class="header__logo"><img src="${logoIcon}" alt="logo" /></div>
         <nav class="header__nav">

@@ -82,7 +82,7 @@ export default class Products {
 	}
 
 	template() {
-		return `
+		return /*html*/ `
 		<div class="store__products">
 			${this.products
 				.map((product) => {
@@ -90,7 +90,7 @@ export default class Products {
 					const quantityInCart = cartItem ? cartItem.quantity : 0;
 					const stockLeft = product.stock - quantityInCart;
 
-					return `
+						return /*html*/ `
 						<div class="store__product ${stockLeft === 0 ? 'store__product--disabled' : ''}">
 							<img src="${product.img}" alt="${product.name}" class="store__product-img" />
 							<div class="store__product-inner">

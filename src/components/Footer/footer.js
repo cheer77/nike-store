@@ -10,7 +10,7 @@ export default class Footer {
 	}
 
 	template() {
-		return `
+		return /*html*/ `
 				<div class="footer__inner cont">
 					<div class="footer__logo">
 						<img src="${logoIcon}" alt="logo" />
