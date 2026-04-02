@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 import Header from '../../components/Header/header';
 import Footer from '../../components/Footer/footer';
 import Cart from '../../components/Cart/cart';
+import CartDrawer from '../../components/CartDrawer/cartDrawer';
 import productsData from '../../data/productsData';
 import { getHomeUrl, getProductIdFromLocation } from '../../router/routes';
 
@@ -16,7 +17,11 @@ const cart = new Cart();
 const productId = getProductIdFromLocation();
 const product = productsData.find((item) => item.id === productId) || productsData[0];
 
-const header = new Header(cart, null);
+let cartDrawer;
+
+const header = new Header(cart, () => {
+	cartDrawer.open();
+});
 const footer = new Footer();
 
 const content = document.createElement('main');
@@ -165,9 +170,46 @@ const initSlider = () => {
 	});
 };
 
+const updateBuyButtonState = () => {
+	const buyBtn = content.querySelector('.nike-product__btn--dark');
+	if (!buyBtn) return;
+
+	const cartItem = cart.getItems().find((item) => item.id === product.id);
+	const quantity = cartItem ? cartItem.quantity : 0;
+	const inStock = product.stock - quantity;
+
+	buyBtn.disabled = inStock <= 0;
+	buyBtn.textContent = inStock <= 0 ? 'Out of stock' : 'Add to cart';
+};
+
+const bindProductActions = () => {
+	const buyBtn = content.querySelector('.nike-product__btn--dark');
+	if (!buyBtn) return;
+
+	buyBtn.addEventListener('click', () => {
+		const isAdded = cart.add(product);
+		if (!isAdded) {
+			updateBuyButtonState();
+			return;
+		}
+
+		updateApp();
+	});
+};
+
+const updateApp = () => {
+	header.updateCount();
+	cartDrawer.update();
+	updateBuyButtonState();
+};
+
 document.body.classList.add('nike-product-page');
+cartDrawer = new CartDrawer(cart, updateApp);
 
 app.prepend(header.render());
 app.append(content);
+app.append(cartDrawer.render());
 app.append(footer.render());
 initSlider();
+bindProductActions();
+updateApp();

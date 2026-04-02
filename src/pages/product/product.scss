@@ -511,10 +511,6 @@ body.nike-product-page {
 		grid-template-columns: repeat(2, minmax(88px, 1fr));
 	}
 
-	.nike-product__story-gallery {
-		grid-template-columns: 1fr;
-	}
-
 	.nike-product__cards {
 		grid-template-columns: 1fr;
 	}
@@ -532,4 +528,3 @@ body.nike-product-page {
 		padding: 16px 40px 44px;
 	}
 }
-
