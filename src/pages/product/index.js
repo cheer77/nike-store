@@ -16,6 +16,8 @@ const app = document.getElementById('app');
 const cart = new Cart();
 const productId = getProductIdFromLocation();
 const product = productsData.find((item) => item.id === productId) || productsData[0];
+const additionalGallery = Array.isArray(product.gallery) ? product.gallery : [];
+const productGallery = [product.img, ...additionalGallery.filter((image) => image !== product.img)];
 
 let cartDrawer;
 
@@ -50,11 +52,11 @@ content.innerHTML = /*html*/ `
 			<div class="nike-product__badge">new drop</div>
 			<div class="nike-product__slider swiper" aria-label="Product gallery">
 				<div class="swiper-wrapper">
-					${Array.from({ length: 3 })
+					${productGallery
 						.map(
-							(_, index) => /*html*/ `
+							(image, index) => /*html*/ `
 						<div class="nike-product__slide swiper-slide">
-							<img src="${product.img}" alt="${product.name} view ${index + 1}" />
+							<img src="${image}" alt="${product.name} view ${index + 1}" />
 						</div>
 					`
 						)
