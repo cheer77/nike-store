@@ -1,7 +1,6 @@
 @use 'sass:color';
 
 .store {
-	margin-top: ac(150px, 110px);
 	padding-bottom: 24px;
 
 	&__products {
@@ -15,11 +14,13 @@
 		display: flex;
 		flex-direction: column;
 		max-width: 100%;
-		border: 1px solid $line-color;
-		border-radius: 18px;
+		@include ui-surface-card(
+			18px,
+			$line-color,
+			0 8px 22px rgba(15, 15, 16, 0.06),
+			linear-gradient(180deg, #fff 0%, #f7f7f8 100%)
+		);
 		overflow: hidden;
-		background: linear-gradient(180deg, #fff 0%, #f7f7f8 100%);
-		box-shadow: 0 8px 22px rgba(15, 15, 16, 0.06);
 		transition:
 			transform 0.25s ease,
 			box-shadow 0.25s ease,
@@ -90,20 +91,8 @@
 	}
 
 	&__product-view {
-		display: flex;
-		align-items: center;
-		gap: 6px;
 		max-width: max-content;
-		padding: 4px 10px;
-		border: 1px solid #dbdbe0;
-		border-radius: 999px;
-		background: rgba(#fff, 0.95);
-		color: $primary-color;
-		font-size: 11px;
-		font-weight: 700;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		line-height: 1;
+		@include ui-pill-badge();
 		transition:
 			border-color 0.2s ease,
 			background-color 0.2s ease,
@@ -143,18 +132,17 @@
 
 	&__product-btn {
 		margin-top: 2px;
-		padding: 12px 14px;
-		border-radius: 12px;
-		background: $secondary-color;
-		color: #fff;
-		font-size: 13px;
-		font-weight: 700;
-		letter-spacing: 0.06em;
-		text-transform: uppercase;
-		cursor: pointer;
-		transition:
-			box-shadow 0.2s ease,
-			background-color 0.2s ease;
+		@include ui-button-base(
+			$padding: 12px 14px,
+			$radius: 12px,
+			$font-size: 13px,
+			$letter-spacing: 0.06em,
+			$transition: (
+				box-shadow 0.2s ease,
+				background-color 0.2s ease,
+			)
+		);
+		@include ui-button-solid($secondary-color, #fff);
 
 		&:hover {
 			box-shadow: 0 12px 20px rgba(17, 17, 17, 0.24);
@@ -162,8 +150,11 @@
 	}
 
 	&__product-btn--disabled {
-		background: color.adjust(#8a8a90, $lightness: 5%);
-		cursor: not-allowed;
+		@include ui-button-disabled(
+			color.adjust(#8a8a90, $lightness: 5%),
+			#fff,
+			color.adjust(#8a8a90, $lightness: 5%)
+		);
 
 		&:hover {
 			transform: none;

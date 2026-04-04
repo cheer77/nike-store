@@ -23,7 +23,8 @@ body {
 	min-height: 100dvh;
 }
 
-main {
+.main {
+	margin-top: ac(150px, 110px);
 	flex-grow: 1;
 }
 

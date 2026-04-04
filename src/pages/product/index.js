@@ -11,6 +11,7 @@ import Cart from '../../components/Cart/cart';
 import CartDrawer from '../../components/CartDrawer/cartDrawer';
 import productsData from '../../data/productsData';
 import { getHomeUrl, getProductIdFromLocation } from '../../router/routes';
+import { createPageMain } from '../../utils/createPageMain';
 
 const app = document.getElementById('app');
 const cart = new Cart();
@@ -26,36 +27,35 @@ const header = new Header(cart, () => {
 });
 const footer = new Footer();
 
-const content = document.createElement('main');
-content.classList.add('nike-product');
+const content = createPageMain('product-page');
 content.innerHTML = /*html*/ `
-		<section class="nike-product__hero cont">
-		<div class="nike-product__hero-inner">
-			<p class="nike-product__eyebrow">Nike Running</p>
-			<h1 class="nike-product__title">${product.name}</h1>
-			<p class="nike-product__subtitle">
+		<section class="product-page__hero cont">
+		<div class="product-page__hero-inner">
+			<p class="product-page__eyebrow">Nike Running</p>
+			<h1 class="product-page__title">${product.name}</h1>
+			<p class="product-page__subtitle">
 				Iconic Tuned Air cushioning with a bold silhouette for everyday street performance.
 			</p>
 
-			<div class="nike-product__price-row">
-				<p class="nike-product__price">$${Number(product.price).toFixed(2)}</p>
-				<p class="nike-product__tax">incl. VAT / free shipping over $150</p>
+			<div class="product-page__price-row">
+				<p class="product-page__price">$${Number(product.price).toFixed(2)}</p>
+				<p class="product-page__tax">incl. VAT / free shipping over $150</p>
 			</div>
 
-			<div class="nike-product__actions">
-				<button class="nike-product__btn nike-product__btn--dark" type="button">Add to cart</button>
-				<button class="nike-product__btn nike-product__btn--light" type="button">Add to favorites</button>
+			<div class="product-page__actions">
+				<button class="product-page__btn product-page__btn--dark" type="button">Add to cart</button>
+				<button class="product-page__btn product-page__btn--light" type="button">Add to favorites</button>
 			</div>
 		</div>
 
-		<div class="nike-product__visual">
-			<div class="nike-product__badge">new drop</div>
-			<div class="nike-product__slider swiper" aria-label="Product gallery">
+		<div class="product-page__visual">
+			<div class="product-page__badge">new drop</div>
+			<div class="product-page__slider swiper" aria-label="Product gallery">
 				<div class="swiper-wrapper">
 					${productGallery
 						.map(
 							(image, index) => /*html*/ `
-						<div class="nike-product__slide swiper-slide">
+						<div class="product-page__slide swiper-slide">
 							<img src="${image}" alt="${product.name} view ${index + 1}" />
 						</div>
 					`
@@ -63,30 +63,30 @@ content.innerHTML = /*html*/ `
 						.join('')}
 				</div>
 
-				<button class="nike-product__nav nike-product__nav--prev" type="button" aria-label="Previous slide">←</button>
-				<button class="nike-product__nav nike-product__nav--next" type="button" aria-label="Next slide">→</button>
+				<button class="product-page__nav product-page__nav--prev" type="button" aria-label="Previous slide">←</button>
+				<button class="product-page__nav product-page__nav--next" type="button" aria-label="Next slide">→</button>
 
-				<div class="nike-product__dots" aria-label="Slide navigation"></div>
+				<div class="product-page__dots" aria-label="Slide navigation"></div>
 			</div>
 		</div>
 	</section>
 
-		<section class="nike-product__details cont">
-		<div class="nike-product__sizes">
-			<h2 class="nike-product__section-title">Select Size (EU)</h2>
-			<div class="nike-product__size-grid">
-				<button type="button" class="nike-product__size">40</button>
-				<button type="button" class="nike-product__size">41</button>
-				<button type="button" class="nike-product__size nike-product__size--active">42</button>
-				<button type="button" class="nike-product__size">43</button>
-				<button type="button" class="nike-product__size">44</button>
-				<button type="button" class="nike-product__size nike-product__size--disabled" disabled>45</button>
+	<section class="product-page__details cont">
+		<div class="product-page__sizes">
+			<h2 class="product-page__section-title">Select Size (EU)</h2>
+			<div class="product-page__size-grid">
+				<button type="button" class="product-page__size">40</button>
+				<button type="button" class="product-page__size">41</button>
+				<button type="button" class="product-page__size product-page__size--active">42</button>
+				<button type="button" class="product-page__size">43</button>
+				<button type="button" class="product-page__size">44</button>
+				<button type="button" class="product-page__size product-page__size--disabled" disabled>45</button>
 			</div>
 		</div>
 
-		<div class="nike-product__meta">
-			<h2 class="nike-product__section-title">Product Details</h2>
-			<ul class="nike-product__meta-list">
+		<div class="product-page__meta">
+			<h2 class="product-page__section-title">Product Details</h2>
+			<ul class="product-page__meta-list">
 				<li>Tuned Air units for responsive cushioning.</li>
 				<li>Breathable mesh upper with synthetic overlays.</li>
 				<li>Rubber outsole with durable traction pattern.</li>
@@ -96,33 +96,33 @@ content.innerHTML = /*html*/ `
 		</div>
 	</section>
 
-		<section class="nike-product__story cont">
-		<div class="nike-product__story-content">
-			<p class="nike-product__eyebrow">Engineered for movement</p>
-			<h2 class="nike-product__section-title">Street DNA. Running tech.</h2>
+	<section class="product-page__story cont">
+		<div class="product-page__story-content">
+			<p class="product-page__eyebrow">Engineered for movement</p>
+			<h2 class="product-page__section-title">Street DNA. Running tech.</h2>
 			<p>
 				Built for comfort and visual impact, the Air Max Plus blends heritage lines with modern cushioning for all-day wear.
 			</p>
 		</div>
-		<div class="nike-product__story-gallery">
+		<div class="product-page__story-gallery">
 			<img src="${productsData[1].img}" alt="${productsData[1].name}" />
 			<img src="${productsData[2].img}" alt="${productsData[2].name}" />
 		</div>
 	</section>
 
-		<section class="nike-product__recommended cont">
-		<div class="nike-product__section-head">
-			<h2 class="nike-product__section-title">You May Also Like</h2>
-			<a href="${getHomeUrl()}" class="nike-product__link">Shop all</a>
+	<section class="product-page__recommended cont">
+		<div class="product-page__section-head">
+			<h2 class="product-page__section-title">You May Also Like</h2>
+			<a href="${getHomeUrl()}" class="product-page__link">Shop all</a>
 		</div>
 
-		<div class="nike-product__cards">
+		<div class="product-page__cards">
 			${productsData
 				.filter((item) => item.id !== product.id)
 				.slice(0, 4)
 				.map(
 					(item) => /*html*/ `
-				<article class="nike-card">
+				<article class="product-page__card">
 					<img src="${item.img}" alt="${item.name}" />
 					<h3>${item.name}</h3>
 					<p>$${Number(item.price).toFixed(2)}</p>
@@ -135,7 +135,7 @@ content.innerHTML = /*html*/ `
 `;
 
 const initSlider = () => {
-	const slider = content.querySelector('.nike-product__slider');
+	const slider = content.querySelector('.product-page__slider');
 	if (!slider) return;
 
 	new Swiper(slider, {
@@ -154,11 +154,11 @@ const initSlider = () => {
 			onlyInViewport: true,
 		},
 		navigation: {
-			prevEl: slider.querySelector('.nike-product__nav--prev'),
-			nextEl: slider.querySelector('.nike-product__nav--next'),
+			prevEl: slider.querySelector('.product-page__nav--prev'),
+			nextEl: slider.querySelector('.product-page__nav--next'),
 		},
 		pagination: {
-			el: slider.querySelector('.nike-product__dots'),
+			el: slider.querySelector('.product-page__dots'),
 			clickable: true,
 		},
 		autoplay: {
@@ -173,7 +173,7 @@ const initSlider = () => {
 };
 
 const updateBuyButtonState = () => {
-	const buyBtn = content.querySelector('.nike-product__btn--dark');
+	const buyBtn = content.querySelector('.product-page__btn--dark');
 	if (!buyBtn) return;
 
 	const cartItem = cart.getItems().find((item) => item.id === product.id);
@@ -182,10 +182,11 @@ const updateBuyButtonState = () => {
 
 	buyBtn.disabled = inStock <= 0;
 	buyBtn.textContent = inStock <= 0 ? 'Out of stock' : 'Add to cart';
+	buyBtn.classList.toggle('product-page__btn--disabled', inStock <= 0);
 };
 
 const bindProductActions = () => {
-	const buyBtn = content.querySelector('.nike-product__btn--dark');
+	const buyBtn = content.querySelector('.product-page__btn--dark');
 	if (!buyBtn) return;
 
 	buyBtn.addEventListener('click', () => {
@@ -205,7 +206,7 @@ const updateApp = () => {
 	updateBuyButtonState();
 };
 
-document.body.classList.add('nike-product-page');
+document.body.classList.add('product-page-body');
 cartDrawer = new CartDrawer(cart, updateApp);
 
 app.prepend(header.render());

@@ -1,0 +1,61 @@
+@use 'variables' as *;
+
+@mixin ui-button-base(
+	$padding: 12px 14px,
+	$radius: 12px,
+	$font-size: 13px,
+	$font-weight: 700,
+	$letter-spacing: 0.06em,
+	$text-transform: uppercase,
+	$line-height: 1,
+	$border: 1px solid transparent,
+	$min-height: null,
+	$transition: background-color 0.2s ease
+) {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	padding: $padding;
+	border-radius: $radius;
+	border: $border;
+	font-size: $font-size;
+	font-weight: $font-weight;
+	letter-spacing: $letter-spacing;
+	line-height: $line-height;
+	text-transform: $text-transform;
+	cursor: pointer;
+	transition: $transition;
+
+	@if $min-height != null {
+		min-height: $min-height;
+	}
+}
+
+@mixin ui-button-solid($background: $secondary-color, $color: #fff, $border-color: transparent) {
+	background: $background;
+	color: $color;
+	border-color: $border-color;
+}
+
+@mixin ui-button-outline($background: #fff, $border-color: $line-color, $color: $primary-color) {
+	background: $background;
+	border-color: $border-color;
+	color: $color;
+}
+
+@mixin ui-button-disabled(
+	$background: $muted-color,
+	$color: #fff,
+	$border-color: $background,
+	$pointer-events: false
+) {
+	background: $background;
+	color: $color;
+	border-color: $border-color;
+	cursor: not-allowed;
+
+	@if $pointer-events {
+		pointer-events: none;
+	}
+}

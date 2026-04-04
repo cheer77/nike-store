@@ -1,0 +1,40 @@
+@use 'variables' as *;
+
+@mixin ui-surface-card(
+	$radius: 18px,
+	$border-color: $line-color,
+	$shadow: 0 8px 22px rgba(15, 15, 16, 0.06),
+	$background: #fff
+) {
+	background: $background;
+	border: 1px solid $border-color;
+	border-radius: $radius;
+	box-shadow: $shadow;
+}
+
+@mixin ui-pill-badge(
+	$padding: 4px 10px,
+	$font-size: 11px,
+	$font-weight: 700,
+	$letter-spacing: 0.08em,
+	$border-color: #dbdbe0,
+	$radius: 999px,
+	$background: rgba(#fff, 0.95),
+	$color: $primary-color,
+	$text-transform: uppercase,
+	$line-height: 1
+) {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: $padding;
+	border: 1px solid $border-color;
+	border-radius: $radius;
+	background: $background;
+	color: $color;
+	font-size: $font-size;
+	font-weight: $font-weight;
+	letter-spacing: $letter-spacing;
+	text-transform: $text-transform;
+	line-height: $line-height;
+}
