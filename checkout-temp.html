@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Checkout Draft</title>
+		<link rel="stylesheet" href="/src/temp/checkout/checkout-temp.scss" />
+	</head>
+	<body class="checkout-temp-body">
+		<main class="checkout-temp cont">
+			<header class="checkout-temp__hero">
+				<p class="checkout-temp__eyebrow">Secure Checkout</p>
+				<h1 class="checkout-temp__title">Complete your order</h1>
+				<p class="checkout-temp__subtitle">
+					Fast delivery, secure payment, and easy returns within 30 days.
+				</p>
+			</header>
+
+			<div class="checkout-temp__layout">
+				<section class="checkout-temp__form-col" aria-label="Checkout form">
+					<article class="checkout-temp-card">
+						<div class="checkout-temp-card__head">
+							<span class="checkout-temp-card__step">1</span>
+							<h2>Contact</h2>
+						</div>
+						<div class="checkout-temp-grid checkout-temp-grid--2">
+							<label class="checkout-temp-field">
+								<span>Email</span>
+								<input type="email" placeholder="alex@mail.com" />
+							</label>
+							<label class="checkout-temp-field">
+								<span>Phone</span>
+								<input type="tel" placeholder="+49 151 000000" />
+							</label>
+						</div>
+					</article>
+
+					<article class="checkout-temp-card">
+						<div class="checkout-temp-card__head">
+							<span class="checkout-temp-card__step">2</span>
+							<h2>Delivery</h2>
+						</div>
+						<div class="checkout-temp-shipping-options">
+							<label class="checkout-temp-option checkout-temp-option--active">
+								<input type="radio" name="shipping" checked />
+								<div>
+									<p>Courier delivery</p>
+									<span>1-2 business days</span>
+								</div>
+								<strong>Free</strong>
+							</label>
+							<label class="checkout-temp-option">
+								<input type="radio" name="shipping" />
+								<div>
+									<p>Store pickup</p>
+									<span>Ready tomorrow</span>
+								</div>
+								<strong>Free</strong>
+							</label>
+						</div>
+						<div class="checkout-temp-grid checkout-temp-grid--2">
+							<label class="checkout-temp-field">
+								<span>First name</span>
+								<input type="text" placeholder="Aleksandr" />
+							</label>
+							<label class="checkout-temp-field">
+								<span>Last name</span>
+								<input type="text" placeholder="Cervonnyj" />
+							</label>
+							<label class="checkout-temp-field checkout-temp-field--full">
+								<span>Address</span>
+								<input type="text" placeholder="Alexanderplatz 9" />
+							</label>
+							<label class="checkout-temp-field">
+								<span>City</span>
+								<input type="text" placeholder="Berlin" />
+							</label>
+							<label class="checkout-temp-field">
+								<span>ZIP code</span>
+								<input type="text" placeholder="10178" />
+							</label>
+						</div>
+					</article>
+
+					<article class="checkout-temp-card">
+						<div class="checkout-temp-card__head">
+							<span class="checkout-temp-card__step">3</span>
+							<h2>Payment</h2>
+						</div>
+						<div class="checkout-temp-grid checkout-temp-grid--2">
+							<label class="checkout-temp-field checkout-temp-field--full">
+								<span>Card number</span>
+								<input type="text" placeholder="4242 4242 4242 4242" />
+							</label>
+							<label class="checkout-temp-field">
+								<span>Expiry date</span>
+								<input type="text" placeholder="MM / YY" />
+							</label>
+							<label class="checkout-temp-field">
+								<span>CVV</span>
+								<input type="text" placeholder="123" />
+							</label>
+						</div>
+						<label class="checkout-temp-checkbox">
+							<input type="checkbox" checked />
+							<span>Save card for future purchases</span>
+						</label>
+					</article>
+				</section>
+
+				<aside class="checkout-temp__summary-col" aria-label="Order summary">
+					<article class="checkout-temp-summary">
+						<h2>Order Summary</h2>
+						<div class="checkout-temp-summary__items">
+							<div class="checkout-temp-item">
+								<div class="checkout-temp-item__image"></div>
+								<div class="checkout-temp-item__content">
+									<p>Nike Air Max Plus</p>
+									<span>Size EU 42 · Qty 1</span>
+								</div>
+								<strong>$100.99</strong>
+							</div>
+							<div class="checkout-temp-item">
+								<div class="checkout-temp-item__image checkout-temp-item__image--alt"></div>
+								<div class="checkout-temp-item__content">
+									<p>Nike Structure Plus</p>
+									<span>Size EU 43 · Qty 1</span>
+								</div>
+								<strong>$179.99</strong>
+							</div>
+						</div>
+
+						<label class="checkout-temp-field checkout-temp-field--promo">
+							<span>Promo code</span>
+							<div class="checkout-temp-promo">
+								<input type="text" placeholder="SPRING20" />
+								<button type="button">Apply</button>
+							</div>
+						</label>
+
+						<div class="checkout-temp-summary__totals">
+							<div><span>Subtotal</span><strong>$280.98</strong></div>
+							<div><span>Shipping</span><strong>Free</strong></div>
+							<div><span>Discount</span><strong>-$20.00</strong></div>
+							<div class="checkout-temp-summary__grand"><span>Total</span><strong>$260.98</strong></div>
+						</div>
+
+						<button type="button" class="checkout-temp-summary__cta">Place Order</button>
+						<p class="checkout-temp-summary__note">
+							By placing an order, you agree to the Terms and Privacy Policy.
+						</p>
+					</article>
+				</aside>
+			</div>
+		</main>
+	</body>
+</html>
