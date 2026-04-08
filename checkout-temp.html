@@ -36,9 +36,36 @@
 									<span>Email</span>
 									<input type="email" placeholder=" " />
 								</label>
-								<label class="checkout-field checkout-field--floating">
+								<label class="checkout-field checkout-phone-field">
 									<span>Phone number</span>
-									<input type="tel" placeholder=" " />
+									<div class="checkout-phone-field__control">
+										<button
+											type="button"
+											class="checkout-country-select__trigger"
+											data-country-select-trigger
+											aria-expanded="false"
+											aria-controls="checkout-country-select-panel"
+										>
+											<span class="checkout-country-select__flag" data-country-select-flag>🇺🇸</span>
+											<span class="checkout-country-select__code" data-country-select-code>+1</span>
+										</button>
+										<input type="hidden" name="phoneCountryCode" value="+1" data-country-select-hidden-code />
+										<input
+											type="tel"
+											class="checkout-phone-field__input"
+											data-country-select-phone
+											placeholder="(555) 000-0000"
+										/>
+									</div>
+									<div class="checkout-country-select" id="checkout-country-select-panel" data-country-select-panel hidden>
+										<input
+											type="text"
+											class="checkout-country-select__search"
+											data-country-select-search
+											placeholder="Search country or code"
+										/>
+										<div class="checkout-country-select__list" data-country-select-list></div>
+									</div>
 								</label>
 							</div>
 						</article>
@@ -95,14 +122,19 @@
 								<span class="checkout-card__step">3</span>
 								<h2>Payment</h2>
 							</div>
-							<div class="checkout-payment">
-								<article class="checkout-payment-option">
-									<input id="payment-card" type="radio" name="payment-method" checked />
-									<label class="checkout-payment-option__head" for="payment-card">
+							<div class="checkout-payment" data-disclosure data-disclosure-type="accordion" data-disclosure-single>
+								<article class="checkout-payment-option is-open" data-disclosure-item>
+									<button
+										type="button"
+										class="checkout-payment-option__head"
+										data-disclosure-trigger
+										aria-expanded="true"
+										aria-controls="payment-panel-card"
+									>
 										<span>Card</span>
 										<strong>Visa / MasterCard</strong>
-									</label>
-									<div class="checkout-payment-option__panel">
+									</button>
+									<div class="checkout-payment-option__panel" id="payment-panel-card" data-disclosure-panel>
 										<div class="checkout-grid checkout-grid--2">
 											<label class="checkout-field checkout-field--floating checkout-field--full">
 												<span>Card number</span>
@@ -124,39 +156,54 @@
 									</div>
 								</article>
 
-								<article class="checkout-payment-option">
-									<input id="payment-paypal" type="radio" name="payment-method" />
-									<label class="checkout-payment-option__head" for="payment-paypal">
+								<article class="checkout-payment-option" data-disclosure-item>
+									<button
+										type="button"
+										class="checkout-payment-option__head"
+										data-disclosure-trigger
+										aria-expanded="false"
+										aria-controls="payment-panel-paypal"
+									>
 										<span>PayPal</span>
 										<strong>Pay with your PayPal account</strong>
-									</label>
-									<div class="checkout-payment-option__panel">
+									</button>
+									<div class="checkout-payment-option__panel" id="payment-panel-paypal" data-disclosure-panel hidden>
 										<p class="checkout-payment-option__text">
 											You will be redirected to PayPal after clicking Place Order.
 										</p>
 									</div>
 								</article>
 
-								<article class="checkout-payment-option">
-									<input id="payment-apple" type="radio" name="payment-method" />
-									<label class="checkout-payment-option__head" for="payment-apple">
+								<article class="checkout-payment-option" data-disclosure-item>
+									<button
+										type="button"
+										class="checkout-payment-option__head"
+										data-disclosure-trigger
+										aria-expanded="false"
+										aria-controls="payment-panel-apple"
+									>
 										<span>Apple Pay</span>
 										<strong>Fast checkout on Apple devices</strong>
-									</label>
-									<div class="checkout-payment-option__panel">
+									</button>
+									<div class="checkout-payment-option__panel" id="payment-panel-apple" data-disclosure-panel hidden>
 										<p class="checkout-payment-option__text">
 											Confirm payment quickly with Face ID or Touch ID.
 										</p>
 									</div>
 								</article>
 
-								<article class="checkout-payment-option">
-									<input id="payment-google" type="radio" name="payment-method" />
-									<label class="checkout-payment-option__head" for="payment-google">
+								<article class="checkout-payment-option" data-disclosure-item>
+									<button
+										type="button"
+										class="checkout-payment-option__head"
+										data-disclosure-trigger
+										aria-expanded="false"
+										aria-controls="payment-panel-google"
+									>
 										<span>Google Pay</span>
 										<strong>Quick pay with saved cards</strong>
-									</label>
-									<div class="checkout-payment-option__panel">
+									</button>
+									<div class="checkout-payment-option__panel" id="payment-panel-google" data-disclosure-panel hidden>
 										<p class="checkout-payment-option__text">
 											Pay in one tap with cards saved in your Google account.
 										</p>
@@ -219,5 +266,6 @@
 				<a href="#" aria-label="Back to shopping">Back to shopping</a>
 			</div>
 		</footer>
+		<script type="module" src="/src/temp/checkout/checkout-temp.js"></script>
 	</body>
 </html>
