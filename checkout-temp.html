@@ -24,6 +24,7 @@
 			</section>
 
 			<section class="checkout-layout-section cont" aria-label="Checkout content">
+				<form class="checkout-form" data-checkout-form novalidate>
 				<div class="checkout-layout">
 					<section class="checkout-form-col" aria-label="Checkout form">
 						<article class="checkout-card">
@@ -34,7 +35,7 @@
 							<div class="checkout-grid checkout-grid--2">
 								<label class="checkout-field checkout-field--floating">
 									<span>Email</span>
-									<input type="email" placeholder=" " />
+									<input type="email" name="email" required placeholder=" " />
 								</label>
 								<label class="checkout-field checkout-phone-field">
 									<span>Phone number</span>
@@ -53,7 +54,10 @@
 										<input
 											type="tel"
 											class="checkout-phone-field__input"
+											name="phone"
 											data-country-select-phone
+											data-validator="phone"
+											required
 											placeholder="(555) 000-0000"
 										/>
 									</div>
@@ -96,23 +100,23 @@
 							<div class="checkout-grid checkout-grid--2">
 								<label class="checkout-field checkout-field--floating">
 									<span>First name</span>
-									<input type="text" placeholder=" " />
+									<input type="text" name="firstName" minlength="2" required placeholder=" " />
 								</label>
 								<label class="checkout-field checkout-field--floating">
 									<span>Last name</span>
-									<input type="text" placeholder=" " />
+									<input type="text" name="lastName" minlength="2" required placeholder=" " />
 								</label>
 								<label class="checkout-field checkout-field--floating checkout-field--full">
 									<span>Address</span>
-									<input type="text" placeholder=" " />
+									<input type="text" name="address" minlength="4" required placeholder=" " />
 								</label>
 								<label class="checkout-field checkout-field--floating">
 									<span>City</span>
-									<input type="text" placeholder=" " />
+									<input type="text" name="city" minlength="2" required placeholder=" " />
 								</label>
 								<label class="checkout-field checkout-field--floating">
 									<span>ZIP code</span>
-									<input type="text" placeholder=" " />
+									<input type="text" name="zipCode" minlength="3" required placeholder=" " />
 								</label>
 							</div>
 						</article>
@@ -138,15 +142,15 @@
 										<div class="checkout-grid checkout-grid--2">
 											<label class="checkout-field checkout-field--floating checkout-field--full">
 												<span>Card number</span>
-												<input type="text" placeholder=" " />
+												<input type="text" name="cardNumber" minlength="12" required placeholder=" " />
 											</label>
 											<label class="checkout-field checkout-field--floating">
 												<span>Expiry date</span>
-												<input type="text" placeholder=" " />
+												<input type="text" name="cardExpiry" pattern="(0[1-9]|1[0-2])\s?/\s?\d{2}" required placeholder=" " />
 											</label>
 											<label class="checkout-field checkout-field--floating">
 												<span>CVV</span>
-												<input type="text" placeholder=" " />
+												<input type="text" name="cardCvv" pattern="\d{3,4}" required placeholder=" " />
 											</label>
 										</div>
 										<label class="checkout-checkbox">
@@ -235,28 +239,30 @@
 								</div>
 							</div>
 
-							<label class="checkout-field checkout-field--promo">
+							<label class="checkout-field checkout-field--promo" data-promo>
 								<span>Promo code</span>
 								<div class="checkout-promo">
-									<input type="text" placeholder="SPRING20" />
-									<button type="button">Apply</button>
+									<input type="text" name="promoCode" data-promo-input placeholder="SPRING20" />
+									<button type="button" data-promo-apply>Apply</button>
 								</div>
+								<p class="checkout-promo__status" data-promo-status hidden></p>
 							</label>
 
 							<div class="checkout-summary__totals">
-								<div><span>Subtotal</span><strong>$280.98</strong></div>
+								<div><span>Subtotal</span><strong data-summary-subtotal>$280.98</strong></div>
 								<div><span>Shipping</span><strong>Free</strong></div>
-								<div><span>Discount</span><strong>-$20.00</strong></div>
-								<div class="checkout-summary__grand"><span>Total</span><strong>$260.98</strong></div>
+								<div><span>Discount</span><strong data-summary-discount>$0.00</strong></div>
+								<div class="checkout-summary__grand"><span>Total</span><strong data-summary-total>$280.98</strong></div>
 							</div>
 
-							<button type="button" class="checkout-summary__cta">Place Order</button>
+							<button type="submit" class="checkout-summary__cta">Place Order</button>
 							<p class="checkout-summary__note">
 								By placing an order, you agree to the Terms and Privacy Policy.
 							</p>
 						</article>
 					</aside>
 				</div>
+				</form>
 			</section>
 		</main>
 

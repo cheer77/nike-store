@@ -56,6 +56,9 @@ export default class CountryPhoneSelect {
 		this.onSearchInput = this.onSearchInput.bind(this);
 		this.onListClick = this.onListClick.bind(this);
 		this.onKeydown = this.onKeydown.bind(this);
+		this.onPhoneInput = this.onPhoneInput.bind(this);
+		this.onPhoneBlur = this.onPhoneBlur.bind(this);
+		this.onPhoneClick = this.onPhoneClick.bind(this);
 	}
 
 	init() {
@@ -68,6 +71,9 @@ export default class CountryPhoneSelect {
 		document.addEventListener('click', this.onDocumentClick);
 		this.search.addEventListener('input', this.onSearchInput);
 		this.list.addEventListener('click', this.onListClick);
+		this.phoneInput?.addEventListener('input', this.onPhoneInput);
+		this.phoneInput?.addEventListener('blur', this.onPhoneBlur);
+		this.phoneInput?.addEventListener('click', this.onPhoneClick);
 		document.addEventListener('keydown', this.onKeydown);
 	}
 
@@ -76,6 +82,9 @@ export default class CountryPhoneSelect {
 		document.removeEventListener('click', this.onDocumentClick);
 		this.search?.removeEventListener('input', this.onSearchInput);
 		this.list?.removeEventListener('click', this.onListClick);
+		this.phoneInput?.removeEventListener('input', this.onPhoneInput);
+		this.phoneInput?.removeEventListener('blur', this.onPhoneBlur);
+		this.phoneInput?.removeEventListener('click', this.onPhoneClick);
 		document.removeEventListener('keydown', this.onKeydown);
 	}
 
@@ -130,6 +139,20 @@ export default class CountryPhoneSelect {
 		this.close();
 	}
 
+	onPhoneInput() {
+		this.validatePhone();
+	}
+
+	onPhoneBlur() {
+		this.validatePhone();
+	}
+
+	onPhoneClick() {
+		if (!this.panel.hidden) {
+			this.close();
+		}
+	}
+
 	open() {
 		this.panel.hidden = false;
 		this.trigger.setAttribute('aria-expanded', 'true');
@@ -161,7 +184,32 @@ export default class CountryPhoneSelect {
 			if (!prevValue) {
 				this.phoneInput.placeholder = `${country.dialCode} 000 000 000`;
 			}
+
+			this.validatePhone();
 		}
+	}
+
+	validatePhone() {
+		if (!this.phoneInput) return true;
+
+		const raw = this.phoneInput.value.trim();
+		if (!raw) {
+			this.phoneInput.setCustomValidity('');
+			return true;
+		}
+
+		const digits = raw.replace(/\D/g, '');
+		const isLengthValid = digits.length >= 6 && digits.length <= 14;
+
+		if (!isLengthValid) {
+			this.phoneInput.setCustomValidity(
+				`Phone number for ${this.activeItem.name} should contain 6-14 digits.`
+			);
+			return false;
+		}
+
+		this.phoneInput.setCustomValidity('');
+		return true;
 	}
 
 	renderList(countries) {
