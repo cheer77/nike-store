@@ -31,7 +31,9 @@ const renderSummaryItems = () => {
 		.map(
 			(item) => /*html*/ `
 				<div class="checkout-item">
-					<div class="checkout-item__image"></div>
+					<div class="checkout-item__image">
+						<img src="${item.img}" alt="${item.name}" class="checkout-item__image-img" loading="lazy" />
+					</div>
 					<div class="checkout-item__content">
 						<p>${item.name}</p>
 						<span>Qty ${item.quantity}</span>
