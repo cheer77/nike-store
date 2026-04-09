@@ -81,6 +81,11 @@ export default class Cart {
 		this.save();
 	}
 
+	clear() {
+		this.cartItems = [];
+		this.save();
+	}
+
 	getItems() {
 		return this.cartItems;
 	}

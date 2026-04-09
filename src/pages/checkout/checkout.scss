@@ -104,6 +104,69 @@
 	gap: ac(24px, 14px);
 }
 
+.checkout-success__card {
+	@include ui-surface-card(
+		$radius: 22px,
+		$border-color: rgba(#131313, 0.08),
+		$shadow: 0 22px 42px rgba(#111111, 0.08),
+		$background: rgba(#ffffff, 0.9)
+	);
+	padding: ac(36px, 20px);
+	text-align: center;
+}
+
+.checkout-success__badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 30px;
+	padding: 0 12px;
+	border-radius: 999px;
+	background: rgba(#1d7a37, 0.12);
+	border: 1px solid rgba(#1d7a37, 0.25);
+	color: #1d7a37;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.checkout-success__title {
+	margin: 16px 0 10px;
+	font-family: $display-font;
+	font-size: ac(54px, 34px);
+	line-height: 0.95;
+	letter-spacing: 0.03em;
+	text-transform: uppercase;
+}
+
+.checkout-success__text {
+	margin: 0 auto;
+	max-width: 56ch;
+	font-size: 15px;
+	line-height: 1.65;
+	color: $muted-color;
+}
+
+.checkout-success__action {
+	@include ui-button-base(
+		$padding: 0 24px,
+		$radius: 14px,
+		$font-size: 12px,
+		$letter-spacing: 0.09em,
+		$min-height: 48px
+	);
+	@include ui-button-solid($secondary-color, #fff);
+	margin: 22px auto 0;
+	width: fit-content;
+	text-decoration: none;
+}
+
+.checkout-success__action:hover {
+	color: #fff;
+	background: #252525;
+}
+
 .checkout-form-col {
 	display: grid;
 	gap: ac(20px, 12px);

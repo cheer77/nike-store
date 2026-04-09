@@ -8,6 +8,7 @@ import Disclosure from '../../modules/disclosure';
 import CountryPhoneSelect from '../../modules/country-phone-select';
 import FormValidation from '../../modules/form-validation';
 import PromoCode from '../../modules/promo-code';
+import { getHomeUrl } from '../../router/routes';
 import { createPageMain } from '../../utils/createPageMain';
 
 const app = document.getElementById('app');
@@ -66,7 +67,7 @@ content.innerHTML = /*html*/ `
 		<p class="checkout-hero__subtitle">Fast delivery, secure payment, and easy returns within 30 days.</p>
 	</section>
 
-	<section class="checkout-layout-section cont" aria-label="Checkout content">
+	<section class="checkout-layout-section cont" aria-label="Checkout content" data-checkout-layout>
 		<form class="checkout-form" data-checkout-form novalidate>
 			<div class="checkout-layout">
 				<section class="checkout-form-col" aria-label="Checkout form">
@@ -282,6 +283,18 @@ content.innerHTML = /*html*/ `
 			</div>
 		</form>
 	</section>
+
+	<section class="checkout-success cont" data-checkout-success hidden>
+		<div class="checkout-success__card">
+			<p class="checkout-success__badge">Order Confirmed</p>
+			<h2 class="checkout-success__title">Thank you for your purchase</h2>
+			<p class="checkout-success__text">
+				Your order <strong data-success-order-id></strong> has been placed successfully.
+				A confirmation email has been sent to <strong data-success-email></strong>.
+			</p>
+			<a href="${getHomeUrl()}" class="checkout-success__action">Back to Home</a>
+		</div>
+	</section>
 `;
 
 const header = new Header(cart, () => {
@@ -297,6 +310,25 @@ const updateApp = () => {
 
 cartDrawer = new CartDrawer(cart, updateApp);
 const footer = new Footer();
+
+const showSuccessState = (form) => {
+	const checkoutLayout = content.querySelector('[data-checkout-layout]');
+	const checkoutSuccess = content.querySelector('[data-checkout-success]');
+	const orderIdEl = content.querySelector('[data-success-order-id]');
+	const emailEl = content.querySelector('[data-success-email]');
+	const email = form.elements.email?.value?.trim() || 'your email';
+	const orderId = `NS-${Math.random().toString().slice(2, 8)}`;
+
+	if (orderIdEl) orderIdEl.textContent = orderId;
+	if (emailEl) emailEl.textContent = email;
+
+	if (checkoutLayout) checkoutLayout.hidden = true;
+	if (checkoutSuccess) checkoutSuccess.hidden = false;
+
+	cart.clear();
+	updateApp();
+	window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 
 const initPaymentAccordion = () => {
 	const paymentRoot = content.querySelector('[data-disclosure]');
@@ -324,7 +356,9 @@ const initCheckoutValidation = () => {
 	const form = content.querySelector('[data-checkout-form]');
 	if (!form) return;
 
-	const validation = new FormValidation(form);
+	const validation = new FormValidation(form, {
+		onValidSubmit: () => showSuccessState(form),
+	});
 	validation.init();
 };
 

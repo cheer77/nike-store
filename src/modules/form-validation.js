@@ -60,8 +60,9 @@ const getValidationMessage = (input) => {
 };
 
 export default class FormValidation {
-	constructor(form) {
+	constructor(form, options = {}) {
 		this.form = form;
+		this.options = options;
 		this.inputs = Array.from(form.querySelectorAll('input, textarea, select'));
 		this.isSubmitAttempted = false;
 
@@ -110,7 +111,9 @@ export default class FormValidation {
 		}
 
 		event.preventDefault();
-		console.log('Checkout form is valid');
+		if (typeof this.options.onValidSubmit === 'function') {
+			this.options.onValidSubmit(this.form);
+		}
 	}
 
 	onFieldInput(event) {
