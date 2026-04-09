@@ -28,6 +28,7 @@ export default defineConfig({
 			input: {
 				main: resolve(__dirname, 'index.html'),
 				product: resolve(__dirname, 'product.html'),
+				checkout: resolve(__dirname, 'checkout.html'),
 			},
 		},
 	},

@@ -14,6 +14,7 @@ const withBase = (path) => {
 export const ROUTES = {
 	home: '/',
 	product: '/product.html',
+	checkout: '/checkout.html',
 };
 
 export const getHomeUrl = () => withBase(ROUTES.home);
@@ -24,10 +25,11 @@ export const getProductUrl = (id) => {
 	return `${baseUrl}?id=${encodeURIComponent(String(id))}`;
 };
 
+export const getCheckoutUrl = () => withBase(ROUTES.checkout);
+
 export const getProductIdFromLocation = () => {
 	const params = new URLSearchParams(window.location.search);
 	const rawId = params.get('id');
 	const parsed = rawId ? Number(rawId) : NaN;
 	return Number.isFinite(parsed) ? parsed : null;
 };
-

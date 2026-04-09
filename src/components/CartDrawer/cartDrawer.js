@@ -1,4 +1,5 @@
 import './cart-drawer.scss';
+import { getCheckoutUrl } from '../../router/routes';
 
 export default class CartDrawer {
 	constructor(cart, onUpdate) {
@@ -18,6 +19,7 @@ export default class CartDrawer {
 
 	template() {
 		const items = this.cart.getItems();
+		const hasItems = items.length > 0;
 
 		return /*html*/ `
 			<div class="cart-drawer__overlay"></div>
@@ -55,7 +57,7 @@ export default class CartDrawer {
 
 				<div class="cart-drawer__footer">
 					<p class="cart-drawer__total">Total: $${this.cart.getTotal()}</p>
-					<button class="cart-drawer__checkout">Checkout</button>
+					<button class="cart-drawer__checkout" ${hasItems ? '' : 'disabled'}>Checkout</button>
 				</div>
 			</div>
 		`;
@@ -91,6 +93,7 @@ export default class CartDrawer {
 		const increaseBtn = e.target.closest('.cart-item__increase');
 		const decreaseBtn = e.target.closest('.cart-item__decrease');
 		const removeBtn = e.target.closest('.cart-item__remove');
+		const checkoutBtn = e.target.closest('.cart-drawer__checkout');
 
 		if (closeBtn || overlay) {
 			this.close();
@@ -130,6 +133,11 @@ export default class CartDrawer {
 			if (this.onUpdate) {
 				this.onUpdate();
 			}
+		}
+
+		if (checkoutBtn) {
+			if (this.cart.getItems().length === 0) return;
+			window.location.href = getCheckoutUrl();
 		}
 	}
 }

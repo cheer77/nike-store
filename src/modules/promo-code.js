@@ -116,4 +116,18 @@ export default class PromoCode {
 			this.totalEl.textContent = this.formatCurrency(total);
 		}
 	}
+
+	setSubtotal(nextSubtotal) {
+		this.baseSubtotal = Number.isFinite(nextSubtotal) ? nextSubtotal : 0;
+
+		const activePromo = this.activePromoCode ? MOCK_PROMO_CODES[this.activePromoCode] : null;
+		if (!activePromo) {
+			this.updateSummary(0, this.baseSubtotal);
+			return;
+		}
+
+		const discount = this.calculateDiscount(this.baseSubtotal, activePromo);
+		const total = Math.max(this.baseSubtotal - discount, 0);
+		this.updateSummary(discount, total);
+	}
 }
