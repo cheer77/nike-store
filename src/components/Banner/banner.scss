@@ -1,0 +1,26 @@
+.banner {
+	padding-bottom: 22px;
+
+	&__inner {
+		overflow: hidden;
+		background: #e6e6e8;
+	}
+
+	&__image {
+		display: block;
+		width: 100%;
+		height: ac(550px, 240px);
+		object-fit: cover;
+		object-position: center;
+	}
+}
+
+@media (max-width: 768px) {
+	.banner {
+		padding-bottom: 16px;
+
+		&__image {
+			height: clamp(150px, 42vw, 220px);
+		}
+	}
+}
