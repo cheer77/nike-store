@@ -1,6 +1,6 @@
 import './footer.scss';
 import logoIcon from '../../assets/icons/logo.svg';
-import { getHomeUrl } from '../../router/routes';
+import { getAboutUrl, getContactUrl, getHomeUrl } from '../../router/routes';
 
 export default class Footer {
 	render() {
@@ -12,6 +12,8 @@ export default class Footer {
 
 	template() {
 		const homeUrl = getHomeUrl();
+		const aboutUrl = getAboutUrl();
+		const contactUrl = getContactUrl();
 
 		return /*html*/ `
 					<div class="footer__inner cont">
@@ -21,8 +23,8 @@ export default class Footer {
 						<nav class="footer__nav">
 							<ul class="footer__list">
 								<li class="footer__item"><a href="${homeUrl}" class="footer__link">Home</a></li>
-								<li class="footer__item"><a href="${homeUrl}" class="footer__link">About</a></li>
-								<li class="footer__item"><a href="${homeUrl}" class="footer__link">Contact</a></li>
+								<li class="footer__item"><a href="${aboutUrl}" class="footer__link">About</a></li>
+								<li class="footer__item"><a href="${contactUrl}" class="footer__link">Contact</a></li>
 							</ul>
 						</nav>
 					</div>

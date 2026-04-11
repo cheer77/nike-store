@@ -15,6 +15,8 @@ export const ROUTES = {
 	home: '/',
 	product: '/product.html',
 	checkout: '/checkout.html',
+	about: '/about.html',
+	contact: '/contact.html',
 };
 
 export const getHomeUrl = () => withBase(ROUTES.home);
@@ -26,6 +28,8 @@ export const getProductUrl = (id) => {
 };
 
 export const getCheckoutUrl = () => withBase(ROUTES.checkout);
+export const getAboutUrl = () => withBase(ROUTES.about);
+export const getContactUrl = () => withBase(ROUTES.contact);
 
 export const getProductIdFromLocation = () => {
 	const params = new URLSearchParams(window.location.search);

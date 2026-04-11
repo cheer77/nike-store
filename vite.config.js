@@ -29,6 +29,8 @@ export default defineConfig({
 				main: resolve(__dirname, 'index.html'),
 				product: resolve(__dirname, 'product.html'),
 				checkout: resolve(__dirname, 'checkout.html'),
+				about: resolve(__dirname, 'about.html'),
+				contact: resolve(__dirname, 'contact.html'),
 			},
 		},
 	},

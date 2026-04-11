@@ -1,7 +1,7 @@
 import './header.scss';
 import logoIcon from '../../assets/icons/logo.svg';
 import cartIcon from '../../assets/icons/cart.svg';
-import { getHomeUrl } from '../../router/routes';
+import { getAboutUrl, getContactUrl, getHomeUrl } from '../../router/routes';
 
 export default class Header {
 	constructor(cart, onCartClick) {
@@ -141,6 +141,8 @@ export default class Header {
 
 	template() {
 		const homeUrl = getHomeUrl();
+		const aboutUrl = getAboutUrl();
+		const contactUrl = getContactUrl();
 
 		return /*html*/ `
 	        <div class="header__inner cont">
@@ -154,8 +156,8 @@ export default class Header {
 			</div>
 	          <ul class="header__list">
 	            <li class="header__item"><a href="${homeUrl}" class="header__link" data-nav-link>Home</a></li>
-	            <li class="header__item"><a href="${homeUrl}" class="header__link" data-nav-link>About</a></li>
-	            <li class="header__item"><a href="${homeUrl}" class="header__link" data-nav-link>Contact</a></li>
+	            <li class="header__item"><a href="${aboutUrl}" class="header__link" data-nav-link>About</a></li>
+	            <li class="header__item"><a href="${contactUrl}" class="header__link" data-nav-link>Contact</a></li>
 				<li class="header__item header__item--lang">
 					<button
 						type="button"
