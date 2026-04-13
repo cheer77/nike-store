@@ -84,36 +84,46 @@ export default class Products {
 
 	template() {
 		return /*html*/ `
-		<div class="store__products">
-			${this.products
-				.map((product) => {
-					const cartItem = this.cart.getItems().find((item) => item.id === product.id);
-					const quantityInCart = cartItem ? cartItem.quantity : 0;
-					const stockLeft = product.stock - quantityInCart;
+			<div class="store__products">
+				${this.products
+					.map((product) => {
+						const cartItem = this.cart.getItems().find((item) => item.id === product.id);
+						const quantityInCart = cartItem ? cartItem.quantity : 0;
+						const stockLeft = product.stock - quantityInCart;
 
-						return /*html*/ `
-							<div class="store__product ${stockLeft === 0 ? 'store__product--disabled' : ''}">
-								<img src="${product.img}" alt="${product.name}" class="store__product-img" />
-								<div class="store__product-inner">
-										<a href="${getProductUrl(product.id)}" class="store__product-view" aria-label="View ${product.name}">
-										View product <span class="store__product-view-arrow" aria-hidden="true">→</span>
-									</a>
-									<h3 class="store__product-title">${product.name}</h3>
-									<p class="store__product-price">$ ${product.price}</p>
-									<p class="store__product-stock">In stock: ${stockLeft}</p>
-								<button
-									data-id="${product.id}"
-									class="store__product-btn ${stockLeft === 0 ? 'store__product-btn--disabled' : ''}"
-									${stockLeft === 0 ? 'disabled' : ''}
-								>
-									Add to Cart
-								</button>
+							return /*html*/ `
+								<div class="store__product ${stockLeft === 0 ? 'store__product--disabled' : ''}">
+									<img src="${product.img}" alt="${product.name}" class="store__product-img" />
+									<div class="store__product-inner">
+											<a href="${getProductUrl(product.id)}" class="store__product-view" aria-label="View ${product.name}">
+											View product <span class="store__product-view-arrow" aria-hidden="true">→</span>
+										</a>
+										<h3 class="store__product-title">${product.name}</h3>
+										<p class="store__product-price">$ ${product.price}</p>
+										<p class="store__product-stock">In stock: ${stockLeft}</p>
+									<button
+										data-id="${product.id}"
+										class="store__product-btn ${stockLeft === 0 ? 'store__product-btn--disabled' : ''}"
+										${stockLeft === 0 ? 'disabled' : ''}
+									>
+										Add to Cart
+									</button>
+								</div>
 							</div>
-						</div>
-					`;
-				})
-				.join('')}
-		</div>
-	`;
+						`;
+					})
+					.join('')}
+			</div>
+
+			<nav class="store__pagination" aria-label="Products pagination">
+				<button type="button" class="store__page-btn store__page-btn--nav" aria-label="Previous page">‹</button>
+				<button type="button" class="store__page-btn store__page-btn--active" aria-current="page">1</button>
+				<button type="button" class="store__page-btn">2</button>
+				<button type="button" class="store__page-btn">3</button>
+				<span class="store__page-dots" aria-hidden="true">…</span>
+				<button type="button" class="store__page-btn">8</button>
+				<button type="button" class="store__page-btn store__page-btn--nav" aria-label="Next page">›</button>
+			</nav>
+		`;
 	}
 }

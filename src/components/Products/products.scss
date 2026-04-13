@@ -161,6 +161,61 @@
 			box-shadow: none;
 		}
 	}
+
+	&__pagination {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-top: ac(30px, 18px);
+	}
+
+	&__page-btn {
+		min-width: 38px;
+		height: 38px;
+		padding: 0 10px;
+		border-radius: 10px;
+		border: 1px solid rgba(17, 17, 17, 0.14);
+		background: rgba(255, 255, 255, 0.86);
+		color: $primary-color;
+		font-size: 13px;
+		font-weight: 700;
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease,
+			color 0.2s ease,
+			transform 0.2s ease;
+
+		&:hover {
+			background: #fff;
+			border-color: rgba(17, 17, 17, 0.3);
+			transform: translateY(-1px);
+		}
+	}
+
+	&__page-btn--active {
+		background: $secondary-color;
+		color: #fff;
+		border-color: $secondary-color;
+
+		&:hover {
+			background: $secondary-color;
+			border-color: $secondary-color;
+			transform: none;
+		}
+	}
+
+	&__page-btn--nav {
+		font-size: 18px;
+		line-height: 1;
+	}
+
+	&__page-dots {
+		padding: 0 2px;
+		font-size: 16px;
+		color: $muted-color;
+	}
 }
 
 @keyframes storeArrowPulse {
