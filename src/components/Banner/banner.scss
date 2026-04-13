@@ -2,16 +2,102 @@
 	padding-bottom: 22px;
 
 	&__inner {
+		position: relative;
 		overflow: hidden;
-		background: #e6e6e8;
 	}
 
 	&__image {
 		display: block;
 		width: 100%;
-		height: ac(550px, 240px);
+		height: ac(550px, 320px);
 		object-fit: cover;
 		object-position: center;
+	}
+
+	&__overlay {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(
+				98deg,
+				rgba(10, 10, 10, 0.62) 0%,
+				rgba(10, 10, 10, 0.26) 42%,
+				rgba(10, 10, 10, 0.04) 100%
+			),
+			linear-gradient(0deg, rgba(10, 10, 10, 0.3), rgba(10, 10, 10, 0.3));
+	}
+
+	&__content {
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		display: grid;
+		align-content: center;
+		gap: 10px;
+		padding-block: 16px;
+		color: #fff;
+	}
+
+	&__eyebrow {
+		max-width: max-content;
+		padding: 6px 10px;
+		border-radius: 999px;
+		font-family: $display-font;
+		font-size: 15px;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		background: rgba(255, 255, 255, 0.2);
+		border: 1px solid rgba(255, 255, 255, 0.45);
+	}
+
+	&__title {
+		max-width: 620px;
+		font-size: clamp(30px, 4vw, 62px);
+		line-height: 0.92;
+		text-transform: uppercase;
+		letter-spacing: 0.01em;
+	}
+
+	&__lead {
+		max-width: 620px;
+		font-size: clamp(14px, 1.4vw, 18px);
+		line-height: 1.45;
+		color: rgba(255, 255, 255, 0.92);
+	}
+
+	&__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		margin-top: 4px;
+	}
+
+	&__btn {
+		@include ui-button-base(
+			$padding: 12px 16px,
+			$radius: 999px,
+			$font-size: 12px,
+			$letter-spacing: 0.09em,
+			$transition: (
+				background-color 0.2s ease,
+				border-color 0.2s ease,
+				color 0.2s ease,
+			)
+		);
+	}
+
+	&__btn--solid {
+		@include ui-button-solid($accent-color, #111);
+	}
+
+	&__btn--ghost {
+		border: 1px solid rgba(255, 255, 255, 0.58);
+		background: rgba(255, 255, 255, 0.08);
+		color: #fff;
+
+		&:hover {
+			background: rgba(255, 255, 255, 0.2);
+		}
 	}
 }
 
@@ -19,8 +105,54 @@
 	.banner {
 		padding-bottom: 16px;
 
-		&__image {
-			height: clamp(150px, 42vw, 220px);
+		&__content {
+			align-content: flex-start;
+			gap: 7px;
+			padding-block: 14px;
+		}
+
+		&__eyebrow {
+			font-size: 12px;
+			padding: 5px 8px;
+		}
+
+		&__title {
+			font-size: clamp(32px, 8.2vw, 44px);
+			max-width: 86%;
+		}
+
+		&__lead {
+			max-width: 88%;
+			font-size: 12px;
+			line-height: 1.3;
+		}
+
+		&__btn {
+			padding: 9px 12px;
+			font-size: 11px;
+			letter-spacing: 0.06em;
+		}
+	}
+}
+
+@media (max-width: 420px) {
+	.banner {
+		&__content {
+			gap: 6px;
+		}
+
+		&__title {
+			font-size: clamp(24px, 10vw, 34px);
+			max-width: 94%;
+		}
+
+		&__lead {
+			display: none;
+		}
+
+		&__actions {
+			gap: 8px;
+			margin-top: 2px;
 		}
 	}
 }
