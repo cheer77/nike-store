@@ -1,5 +1,5 @@
 .home-faq {
-	padding: clamp(18px, 3vw, 34px) 0;
+	padding: ac(34px, 18px) 0;
 
 	&__head {
 		display: grid;
@@ -16,7 +16,7 @@
 	}
 
 	&__title {
-		font-size: clamp(22px, 3vw, 36px);
+		font-size: ac(36px, 22px);
 		line-height: 1;
 		text-transform: uppercase;
 	}

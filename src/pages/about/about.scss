@@ -4,7 +4,7 @@
 
 .about-hero {
 	position: relative;
-	padding: clamp(34px, 5vw, 72px) 0 clamp(24px, 4vw, 42px);
+	padding: ac(72px, 34px) 0 ac(42px, 24px);
 
 	&::before {
 		content: '';
@@ -33,7 +33,7 @@
 
 	&__title {
 		max-width: 900px;
-		font-size: clamp(34px, 5vw, 72px);
+		font-size: ac(72px, 34px);
 		line-height: 0.95;
 		text-transform: uppercase;
 		letter-spacing: 0.01em;
@@ -41,7 +41,7 @@
 
 	&__lead {
 		max-width: 760px;
-		font-size: clamp(16px, 2.2vw, 20px);
+		font-size: ac(20px, 16px);
 		color: color-mix(in srgb, $primary-color 82%, #000 18%);
 	}
 
@@ -62,7 +62,7 @@
 }
 
 .about-timeline {
-	padding-bottom: clamp(24px, 4vw, 46px);
+	padding-bottom: ac(46px, 24px);
 
 	&__head {
 		display: grid;
@@ -79,7 +79,7 @@
 	}
 
 	&__title {
-		font-size: clamp(26px, 3.8vw, 46px);
+		font-size: ac(46px, 26px);
 		line-height: 1;
 		text-transform: uppercase;
 	}
@@ -121,7 +121,7 @@
 }
 
 .about-gallery {
-	padding: clamp(18px, 3vw, 36px) 0;
+	padding: ac(36px, 18px) 0;
 
 	&__inner {
 		display: grid;
@@ -144,7 +144,7 @@
 	}
 
 	&__title {
-		font-size: clamp(24px, 3.4vw, 42px);
+		font-size: ac(42px, 24px);
 		line-height: 1;
 		text-transform: uppercase;
 	}
@@ -220,7 +220,7 @@
 
 	img {
 		width: 100%;
-		height: clamp(200px, 30vw, 330px);
+		height: ac(330px, 200px);
 		display: block;
 		object-fit: cover;
 	}
@@ -234,7 +234,7 @@
 }
 
 .about-story {
-	padding: clamp(10px, 2.2vw, 24px) 0 clamp(8px, 2vw, 18px);
+	padding: ac(24px, 10px) 0 ac(18px, 8px);
 
 	&__grid {
 		display: grid;
@@ -252,7 +252,7 @@
 		gap: 8px;
 
 		h2 {
-			font-size: clamp(18px, 2.2vw, 24px);
+			font-size: ac(24px, 18px);
 			line-height: 1.1;
 			text-transform: uppercase;
 			letter-spacing: 0.03em;
@@ -267,10 +267,10 @@
 }
 
 .about-sources {
-	padding: clamp(24px, 4vw, 46px) 0 12px;
+	padding: ac(46px, 24px) 0 12px;
 
 	&__title {
-		font-size: clamp(20px, 2.8vw, 28px);
+		font-size: ac(28px, 20px);
 		text-transform: uppercase;
 		letter-spacing: 0.04em;
 		margin-bottom: 10px;

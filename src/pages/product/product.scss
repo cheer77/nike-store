@@ -57,7 +57,7 @@ body.product-page-body {
 
 .product-page__title {
 	font-family: 'Teko', sans-serif;
-	font-size: clamp(54px, 7vw, 82px);
+	font-size: ac(82px, 54px);
 	font-weight: 700;
 	line-height: 0.95;
 	letter-spacing: 0.03em;

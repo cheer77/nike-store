@@ -1,5 +1,5 @@
 .delivery-returns {
-	padding: clamp(18px, 3vw, 32px) 0;
+	padding: ac(32px, 18px) 0;
 
 	&__grid {
 		display: grid;
@@ -8,7 +8,7 @@
 	}
 
 	&__card {
-		padding: clamp(16px, 2vw, 24px);
+		padding: ac(24px, 16px);
 		border-radius: 18px;
 		border: 1px solid rgba(17, 17, 17, 0.1);
 		background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(243, 243, 245, 0.86));
@@ -17,7 +17,7 @@
 		gap: 10px;
 
 		h2 {
-			font-size: clamp(20px, 2.4vw, 30px);
+			font-size: ac(30px, 20px);
 			line-height: 1.05;
 			text-transform: uppercase;
 		}

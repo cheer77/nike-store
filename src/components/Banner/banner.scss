@@ -51,16 +51,16 @@
 	}
 
 	&__title {
-		max-width: 620px;
-		font-size: clamp(30px, 4vw, 62px);
-		line-height: 0.92;
+		max-width: 740px;
+		font-size: ac(62px, 33px);
+		line-height: 1.2;
 		text-transform: uppercase;
 		letter-spacing: 0.01em;
 	}
 
 	&__lead {
 		max-width: 620px;
-		font-size: clamp(14px, 1.4vw, 18px);
+		font-size: ac(18px, 14px);
 		line-height: 1.45;
 		color: rgba(255, 255, 255, 0.92);
 	}
@@ -69,7 +69,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 10px;
-		margin-top: 4px;
+		margin-top: ac(4px, 15px);
 	}
 
 	&__btn {
@@ -117,7 +117,7 @@
 		}
 
 		&__title {
-			font-size: clamp(32px, 8.2vw, 44px);
+			font-size: ac(44px, 32px);
 			max-width: 86%;
 		}
 
@@ -142,12 +142,8 @@
 		}
 
 		&__title {
-			font-size: clamp(24px, 10vw, 34px);
+			font-size: ac(34px, 24px);
 			max-width: 94%;
-		}
-
-		&__lead {
-			display: none;
 		}
 
 		&__actions {
