@@ -1,0 +1,66 @@
+.why-us {
+	padding: clamp(10px, 2.2vw, 22px) 0 clamp(20px, 3.2vw, 34px);
+
+	&__head {
+		display: grid;
+		gap: 6px;
+		margin-bottom: 12px;
+	}
+
+	&__eyebrow {
+		font-family: $display-font;
+		font-size: 16px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $muted-color;
+	}
+
+	&__title {
+		font-size: clamp(22px, 3.1vw, 38px);
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(180px, 1fr));
+		gap: 12px;
+	}
+
+	&__card {
+		padding: 16px;
+		border-radius: 16px;
+		border: 1px solid rgba(17, 17, 17, 0.1);
+		background: rgba(255, 255, 255, 0.74);
+		box-shadow: 0 8px 20px rgba(17, 17, 17, 0.07);
+		display: grid;
+		gap: 6px;
+
+		h3 {
+			font-size: 17px;
+			line-height: 1.2;
+		}
+
+		p {
+			font-size: 13px;
+			line-height: 1.5;
+			color: $muted-color;
+		}
+	}
+}
+
+@media (max-width: 1024px) {
+	.why-us {
+		&__grid {
+			grid-template-columns: repeat(2, minmax(190px, 1fr));
+		}
+	}
+}
+
+@media (max-width: 576px) {
+	.why-us {
+		&__grid {
+			grid-template-columns: 1fr;
+		}
+	}
+}

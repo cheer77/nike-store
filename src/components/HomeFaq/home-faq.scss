@@ -1,0 +1,72 @@
+.home-faq {
+	padding: clamp(18px, 3vw, 34px) 0;
+
+	&__head {
+		display: grid;
+		gap: 6px;
+		margin-bottom: 12px;
+	}
+
+	&__eyebrow {
+		font-family: $display-font;
+		font-size: 16px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $muted-color;
+	}
+
+	&__title {
+		font-size: clamp(22px, 3vw, 36px);
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	&__list {
+		display: grid;
+		gap: 8px;
+	}
+
+	&__item {
+		border-radius: 14px;
+		border: 1px solid rgba(17, 17, 17, 0.1);
+		background: rgba(255, 255, 255, 0.8);
+		overflow: hidden;
+	}
+
+	&__trigger {
+		width: 100%;
+		padding: 14px;
+		text-align: left;
+		font-size: 14px;
+		font-weight: 700;
+		letter-spacing: 0.01em;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		&::after {
+			content: '+';
+			font-size: 20px;
+			line-height: 1;
+		}
+	}
+
+	&__item.is-open &__trigger::after {
+		content: '-';
+	}
+
+	&__panel {
+		display: none;
+		padding: 0 14px 14px;
+
+		p {
+			font-size: 13px;
+			line-height: 1.5;
+			color: $muted-color;
+		}
+	}
+
+	&__item.is-open &__panel {
+		display: block;
+	}
+}

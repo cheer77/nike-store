@@ -1,0 +1,79 @@
+.newsletter {
+	padding: clamp(20px, 3.2vw, 36px) 0 clamp(30px, 4.2vw, 48px);
+
+	&__inner {
+		padding: clamp(16px, 2.4vw, 26px);
+		border-radius: 20px;
+		border: 1px solid rgba(17, 17, 17, 0.1);
+		background:
+			radial-gradient(520px 240px at 0% 0%, rgba($accent-color, 0.28), transparent 64%),
+			linear-gradient(170deg, rgba(255, 255, 255, 0.96), rgba(244, 244, 246, 0.9));
+		box-shadow: 0 10px 24px rgba(17, 17, 17, 0.08);
+		display: grid;
+		gap: 12px;
+	}
+
+	&__content {
+		display: grid;
+		gap: 6px;
+	}
+
+	&__eyebrow {
+		font-family: $display-font;
+		font-size: 16px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $muted-color;
+	}
+
+	&__title {
+		font-size: clamp(22px, 3vw, 36px);
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	&__lead {
+		font-size: 14px;
+		color: $muted-color;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+
+		input {
+			width: 100%;
+			padding: 11px 12px;
+			border-radius: 12px;
+			border: 1px solid rgba(17, 17, 17, 0.2);
+			background: #fff;
+			font-size: 14px;
+		}
+
+		button {
+			@include ui-button-base(
+				$padding: 11px 16px,
+				$radius: 12px,
+				$font-size: 12px,
+				$letter-spacing: 0.08em
+			);
+			@include ui-button-solid($secondary-color, #fff);
+		}
+	}
+
+	&__status {
+		font-size: 13px;
+		font-weight: 600;
+		color: $secondary-color;
+		min-height: 1.2em;
+	}
+}
+
+@media (max-width: 576px) {
+	.newsletter {
+		&__form {
+			grid-template-columns: 1fr;
+		}
+	}
+}
