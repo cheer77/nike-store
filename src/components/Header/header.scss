@@ -243,6 +243,14 @@ body.menu-open {
 		transform: scaleX(1);
 	}
 
+	&__link--active {
+		color: #000;
+	}
+
+	&__link--active::after {
+		transform: scaleX(1);
+	}
+
 	&__lang-current {
 		font-size: 11px;
 		font-weight: 800;
@@ -403,6 +411,11 @@ body.menu-open {
 		&__link::after,
 		&__lang-toggle::after {
 			display: none;
+		}
+
+		&__link--active {
+			border-color: rgba($secondary-color, 0.45);
+			background: rgba($accent-color, 0.26);
 		}
 
 		&__item--lang {

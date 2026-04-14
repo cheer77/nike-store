@@ -139,10 +139,29 @@ export default class Header {
 		this.openLangMenu();
 	}
 
+	normalizePath(path) {
+		if (!path) return '/';
+		let normalized = path.split('?')[0].split('#')[0];
+		normalized = normalized.replace(/\/index\.html$/, '/');
+		if (normalized.length > 1) {
+			normalized = normalized.replace(/\/+$/, '');
+		}
+		return normalized || '/';
+	}
+
+	isActiveUrl(url) {
+		const currentPath = this.normalizePath(window.location.pathname);
+		const targetPath = this.normalizePath(new URL(url, window.location.origin).pathname);
+		return currentPath === targetPath;
+	}
+
 	template() {
 		const homeUrl = getHomeUrl();
 		const aboutUrl = getAboutUrl();
 		const contactUrl = getContactUrl();
+		const homeActive = this.isActiveUrl(homeUrl);
+		const aboutActive = this.isActiveUrl(aboutUrl);
+		const contactActive = this.isActiveUrl(contactUrl);
 
 		return /*html*/ `
 	        <div class="header__inner cont">
@@ -155,9 +174,9 @@ export default class Header {
 				<button type="button" class="header__menu-close" data-close-menu aria-label="Close menu">+</button>
 			</div>
 	          <ul class="header__list">
-	            <li class="header__item"><a href="${homeUrl}" class="header__link" data-nav-link>Home</a></li>
-	            <li class="header__item"><a href="${aboutUrl}" class="header__link" data-nav-link>About</a></li>
-	            <li class="header__item"><a href="${contactUrl}" class="header__link" data-nav-link>Contact</a></li>
+	            <li class="header__item"><a href="${homeUrl}" class="header__link ${homeActive ? 'header__link--active' : ''}" data-nav-link ${homeActive ? 'aria-current="page"' : ''}>Home</a></li>
+	            <li class="header__item"><a href="${aboutUrl}" class="header__link ${aboutActive ? 'header__link--active' : ''}" data-nav-link ${aboutActive ? 'aria-current="page"' : ''}>About</a></li>
+	            <li class="header__item"><a href="${contactUrl}" class="header__link ${contactActive ? 'header__link--active' : ''}" data-nav-link ${contactActive ? 'aria-current="page"' : ''}>Contact</a></li>
 				<li class="header__item header__item--lang">
 					<button
 						type="button"
