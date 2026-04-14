@@ -72,6 +72,14 @@ export default class SizeGuide {
 
 	updateResult() {
 		const lengthCm = Number(this.lengthRange?.value || 26.5);
+		const min = Number(this.lengthRange?.min || 22);
+		const max = Number(this.lengthRange?.max || 32);
+		const progress = ((lengthCm - min) / (max - min)) * 100;
+
+		if (this.lengthRange) {
+			this.lengthRange.style.setProperty('--size-fill', `${progress}%`);
+		}
+
 		const activeFitButton = this.el.querySelector('[data-size-fit].is-active');
 		const fit = activeFitButton ? activeFitButton.dataset.sizeFit : 'regular';
 		const rawEu = lengthToEu(lengthCm) + (fitDelta[fit] ?? 0);
