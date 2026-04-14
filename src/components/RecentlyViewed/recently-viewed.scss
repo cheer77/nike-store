@@ -1,0 +1,122 @@
+.recently-viewed {
+	padding: ac(30px, 18px) 0;
+
+	&__head {
+		display: grid;
+		gap: 6px;
+		margin-bottom: 12px;
+	}
+
+	&__eyebrow {
+		font-family: $display-font;
+		font-size: 16px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $muted-color;
+	}
+
+	&__title {
+		font-size: ac(34px, 22px);
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	&__controls {
+		display: flex;
+		justify-content: flex-end;
+		gap: 8px;
+		margin-bottom: 10px;
+	}
+
+	&__nav {
+		width: 34px;
+		height: 34px;
+		border-radius: 50%;
+		border: 1px solid rgba(17, 17, 17, 0.14);
+		background: rgba(255, 255, 255, 0.9);
+		font-size: 18px;
+		line-height: 1;
+		transition:
+			background-color 0.2s ease,
+			border-color 0.2s ease;
+
+		&:hover {
+			background: #fff;
+			border-color: rgba(17, 17, 17, 0.32);
+		}
+	}
+
+	&__slider.swiper {
+		overflow: hidden;
+	}
+
+	&__track {
+		align-items: stretch;
+	}
+
+	&__card.swiper-slide {
+		border-radius: 16px;
+		overflow: hidden;
+		border: 1px solid rgba(17, 17, 17, 0.1);
+		background: rgba(255, 255, 255, 0.82);
+		box-shadow: 0 8px 20px rgba(17, 17, 17, 0.07);
+		height: auto;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__img {
+		display: block;
+		width: 100%;
+		height: ac(220px, 170px);
+		object-fit: cover;
+		object-position: center 65%;
+		background: #f1f1f2;
+	}
+
+	&__body {
+		padding: 12px;
+		display: grid;
+		gap: 6px;
+
+		h3 {
+			font-size: 16px;
+			line-height: 1.2;
+		}
+
+		p {
+			font-size: 14px;
+			font-weight: 700;
+		}
+
+		a {
+			font-size: 12px;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 0.07em;
+			color: $secondary-color;
+		}
+	}
+
+	&__dots {
+		margin-top: 10px;
+		display: flex;
+		justify-content: center;
+	}
+
+	&__dots .swiper-pagination-bullet {
+		width: 9px;
+		height: 9px;
+		border-radius: 999px;
+		background: rgba(17, 17, 17, 0.24);
+		opacity: 1;
+		transition:
+			width 0.2s ease,
+			background-color 0.2s ease;
+	}
+
+	&__dots .swiper-pagination-bullet-active {
+		width: 20px;
+		background: $secondary-color;
+	}
+}

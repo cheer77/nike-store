@@ -1,5 +1,9 @@
 @use 'sass:color';
 
+body.quick-view-open {
+	overflow: hidden;
+}
+
 .store {
 	padding-bottom: 24px;
 
@@ -149,6 +153,29 @@
 		}
 	}
 
+	&__quick-btn {
+		margin-top: 2px;
+		@include ui-button-base(
+			$padding: 10px 12px,
+			$radius: 12px,
+			$font-size: 12px,
+			$letter-spacing: 0.06em,
+			$transition: (
+				background-color 0.2s ease,
+				border-color 0.2s ease,
+				color 0.2s ease,
+			)
+		);
+		border: 1px solid rgba(17, 17, 17, 0.18);
+		background: rgba(255, 255, 255, 0.8);
+		color: $primary-color;
+
+		&:hover {
+			background: #fff;
+			border-color: rgba(17, 17, 17, 0.34);
+		}
+	}
+
 	&__product-btn--disabled {
 		@include ui-button-disabled(
 			color.adjust(#8a8a90, $lightness: 5%),
@@ -216,6 +243,114 @@
 		font-size: 16px;
 		color: $muted-color;
 	}
+
+	&__quick-view {
+		position: fixed;
+		inset: 0;
+		z-index: 100;
+		display: grid;
+		place-items: center;
+	}
+
+	&__quick-view[hidden] {
+		display: none;
+	}
+
+	&__quick-view-backdrop {
+		position: absolute;
+		inset: 0;
+		background: rgba(15, 15, 16, 0.5);
+		backdrop-filter: blur(2px);
+	}
+
+	&__quick-view-dialog {
+		position: relative;
+		z-index: 1;
+		width: min(92%, 760px);
+		padding: ac(22px, 14px);
+		border-radius: 20px;
+		border: 1px solid rgba(17, 17, 17, 0.12);
+		background: #fff;
+		box-shadow: 0 20px 40px rgba(17, 17, 17, 0.24);
+		display: grid;
+		grid-template-columns: 1fr 1.1fr;
+		gap: 14px;
+	}
+
+	&__quick-view-close {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		width: 34px;
+		height: 34px;
+		border-radius: 50%;
+		border: 1px solid rgba(17, 17, 17, 0.14);
+		background: #fff;
+		font-size: 22px;
+		line-height: 1;
+	}
+
+	&__quick-view-img {
+		width: 100%;
+		height: 100%;
+		min-height: 210px;
+		border-radius: 14px;
+		object-fit: cover;
+		background: #f0f0f1;
+	}
+
+	&__quick-view-content {
+		display: grid;
+		align-content: start;
+		gap: 8px;
+	}
+
+	&__quick-view-title {
+		font-size: ac(32px, 22px);
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	&__quick-view-price {
+		font-family: $display-font;
+		font-size: ac(38px, 26px);
+		line-height: 1;
+	}
+
+	&__quick-view-stock {
+		font-size: 13px;
+		font-weight: 600;
+		color: $muted-color;
+	}
+
+	&__quick-view-actions {
+		margin-top: 8px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+	}
+
+	&__quick-view-link {
+		@include ui-button-base(
+			$padding: 10px 12px,
+			$radius: 12px,
+			$font-size: 12px,
+			$letter-spacing: 0.06em
+		);
+		border: 1px solid rgba(17, 17, 17, 0.18);
+		background: #fff;
+		color: $primary-color;
+	}
+
+	&__quick-view-add {
+		@include ui-button-base(
+			$padding: 10px 14px,
+			$radius: 12px,
+			$font-size: 12px,
+			$letter-spacing: 0.06em
+		);
+		@include ui-button-solid($secondary-color, #fff);
+	}
 }
 
 @keyframes storeArrowPulse {
@@ -256,6 +391,14 @@
 
 		&__product-price {
 			font-size: 28px;
+		}
+
+		&__quick-view-dialog {
+			grid-template-columns: 1fr;
+		}
+
+		&__quick-view-img {
+			min-height: 180px;
 		}
 	}
 }
