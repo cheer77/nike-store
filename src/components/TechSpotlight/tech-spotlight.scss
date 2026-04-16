@@ -1,0 +1,154 @@
+.tech-spotlight {
+	padding: ac(34px, 18px) 0 ac(26px, 14px);
+
+	&__inner {
+		padding: ac(28px, 16px);
+		border-radius: 22px;
+		border: 1px solid rgba(17, 17, 17, 0.1);
+		background:
+			radial-gradient(540px 280px at 100% 0%, rgba($accent-color, 0.3), transparent 66%),
+			linear-gradient(165deg, #fff 0%, #f4f4f6 100%);
+		box-shadow: 0 12px 24px rgba(17, 17, 17, 0.08);
+	}
+
+	&__head {
+		display: grid;
+		gap: 6px;
+		margin-bottom: 14px;
+	}
+
+	&__eyebrow {
+		font-family: $display-font;
+		font-size: 16px;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: $muted-color;
+	}
+
+	&__title {
+		font-size: ac(38px, 22px);
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	&__layout {
+		display: grid;
+		grid-template-columns: 220px 1fr;
+		gap: 14px;
+	}
+
+	&__tabs {
+		display: grid;
+		gap: 8px;
+		align-content: start;
+	}
+
+	&__tab {
+		@include ui-button-base(
+			$padding: 12px 14px,
+			$radius: 12px,
+			$font-size: 12px,
+			$letter-spacing: 0.08em
+		);
+		border: 1px solid rgba(17, 17, 17, 0.14);
+		background: rgba(255, 255, 255, 0.72);
+		text-align: left;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+
+	&__tab.is-active {
+		background: $secondary-color;
+		border-color: $secondary-color;
+		color: #fff;
+	}
+
+	&__panel {
+		padding: 14px;
+		border-radius: 16px;
+		border: 1px solid rgba(17, 17, 17, 0.1);
+		background: rgba(255, 255, 255, 0.84);
+		display: grid;
+		gap: 8px;
+	}
+
+	&__tag {
+		max-width: max-content;
+		padding: 4px 8px;
+		border-radius: 999px;
+		font-size: 11px;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		background: rgba($accent-color, 0.55);
+	}
+
+	&__panel-title {
+		font-size: ac(34px, 24px);
+		line-height: 1;
+		text-transform: uppercase;
+	}
+
+	&__description {
+		font-size: 14px;
+		line-height: 1.5;
+		color: $muted-color;
+	}
+
+	&__stats {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(200px, 1fr));
+		gap: 8px;
+
+		li {
+			padding: 10px;
+			border-radius: 12px;
+			border: 1px solid rgba(17, 17, 17, 0.08);
+			background: #fff;
+			display: grid;
+			gap: 4px;
+		}
+
+		span {
+			font-size: 10px;
+			font-weight: 700;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: $muted-color;
+		}
+
+		strong {
+			font-size: 13px;
+			line-height: 1.4;
+		}
+	}
+}
+
+@media (max-width: 920px) {
+	.tech-spotlight {
+		&__layout {
+			grid-template-columns: 1fr;
+		}
+
+		&__tabs {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			display: grid;
+		}
+
+		&__tab {
+			text-align: center;
+		}
+	}
+}
+
+@media (max-width: 620px) {
+	.tech-spotlight {
+		&__tabs {
+			grid-template-columns: 1fr;
+		}
+
+		&__stats {
+			grid-template-columns: 1fr;
+		}
+	}
+}
